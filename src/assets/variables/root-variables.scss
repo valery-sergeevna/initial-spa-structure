@@ -1,0 +1,16 @@
+@import 'colors';
+
+:root {
+    --colorWhite: #{$colorWhite};
+    --colorBlack: #{$colorBlack};
+    --buttonColor: #{$buttonColor};
+    --buttonBorderRadius: #{$buttonBorderRadius};
+    --inputBorderColor: #{$inputBorderColor};
+    --inputBorderRadius: #{$inputBorderRadius};
+    --inputPlaceholderColor: #{$inputPlaceholderColor};
+    --inputTextColor: #{$inputTextColor};
+    --modalBg: #{$modalBg};
+    --modalBorderRadius: #{$modalBorderRadius};
+    --linkColor: #{$linkColor};
+    --linkColorBlue: #{$linkColorBlue};
+}

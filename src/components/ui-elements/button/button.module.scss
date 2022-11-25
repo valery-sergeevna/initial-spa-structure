@@ -1,0 +1,29 @@
+.button {
+    width: 220px;
+    padding: 10px;
+    height: 45px;
+    background-color: var(--buttonColor);
+    border-radius: var(--buttonBorderRadius);
+    border: 1px solid var(--buttonColor);
+    color: var(--colorWhite);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    cursor: pointer;
+    outline-width: 0;
+    transition: all 0.2s;
+
+    &:hover {
+        color: var(--buttonColor);
+        background: var(--colorWhite);
+    }
+
+    &:disabled {
+
+    }
+
+    &.w100 {
+        width: 100%;
+    }
+}

@@ -1,25 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {
+    createBrowserRouter,
+    RouterProvider,
+} from "react-router-dom";
+import './assets/styles/main.scss';
+import {allLinks} from "./routes/routes-setup";
+import MainPage from "./pages/main-page";
+import Header from "./components/sections/header/header";
+import Footer from "./components/sections/footer/footer";
+import AuthModal from "./components/modals/auth-modal/auth-modal";
 
-function App() {
+const router = createBrowserRouter([
+    {
+        path: allLinks.mainPage,
+        element: <MainPage/>,
+    },
+    {
+        path: allLinks.productPage,
+        element: <div>Product</div>,
+    },
+    {
+        path: allLinks.categories,
+        element: <div>Categories</div>,
+    },
+]);
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <>
+          <Header/>
+          <RouterProvider router={router}/>
+          <Footer/>
+          <AuthModal/>
+      </>
   );
 }
 

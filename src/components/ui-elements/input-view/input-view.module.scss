@@ -1,0 +1,94 @@
+.input {
+    position: relative;
+    input {
+        font-family: inherit;
+        width: 100%;
+        min-width: 200px;
+        border: 1px solid var(--inputBorderColor);
+        border-radius: var(--inputBorderRadius);
+        background: transparent;
+        outline-width: 0;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        padding: 16px 30px;
+        color: var(--inputTextColor);
+
+        &::placeholder {
+            color: var(--inputPlaceholderColor);
+        }
+
+        &:focus {
+            border-color: var(--inputPlaceholderColor);
+        }
+    }
+}
+
+.checkbox {
+    label {
+        cursor: pointer;
+        &:hover {
+            input + .customCheckbox {
+                border-color: #545454;
+            }
+            .text {
+                color: #545454;
+            }
+        }
+    }
+
+    input {
+        display: none;
+        &:checked {
+            & + .customCheckbox {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                &:after {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    top:50%;
+                    left:50%;
+                    transform: translate(-50%, -50%);
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 2px;
+                    background-color: #009EE2;
+                }
+            }
+        }
+    }
+}
+
+.customCheckbox {
+    width: 16px;
+    height: 16px;
+    border: 1px solid #ECECEC;
+    border-radius: 2px;
+    display: inline-block;
+    margin: 0;
+    transition: all 0.2s ease-in-out;
+}
+
+.text {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #BDBDBD;
+    margin-left: 9px;
+    transition: all 0.2s ease-in-out;
+}
+
+.dFlex {
+    display: flex;
+}
+
+.buttonPassword {
+    position: absolute;
+    right: 20px;
+    top: 16px;
+    cursor: pointer;
+}

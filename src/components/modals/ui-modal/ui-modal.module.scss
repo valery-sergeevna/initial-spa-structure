@@ -1,0 +1,49 @@
+.modal {
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 3;
+    background-color: var(--modalBg);
+    height: 100%;
+    width: 100%;
+}
+
+.dialog {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100%;
+}
+
+.content {
+    position: relative;
+    width: 590px;
+    min-height: 430px;
+    background: var(--colorWhite);
+    border-radius: var(--modalBorderRadius);
+    padding: 45px 45px 60px;
+    box-shadow: 0 4px 82px 5px rgba(0, 0, 0, 0.1);
+}
+
+.close {
+    background: transparent;
+    border: none;
+    position: absolute;
+    right: 45px;
+    top: 32px;
+    cursor: pointer;
+    padding: 0;
+}
+
+.overlay {
+    background: rgba(0,0,0, 0.45);
+    position: fixed;
+    top: 0;
+    left:0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+}
