@@ -34,7 +34,7 @@ const UiModal: React.FC<UIModalProps> = (
 
     const id = uniqId();
 
-    const [modal, showModal] = useState<boolean>(true);
+    const [modal, showModal] = useState<boolean>(false);
 
     const [container, setContainer] = useState<any>(null);
 
