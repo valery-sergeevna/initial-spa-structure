@@ -4,11 +4,11 @@ import {
     RouterProvider,
 } from "react-router-dom";
 import './assets/styles/main.scss';
-import {allLinks} from "./routes/routes-setup";
-import { MainPage } from "./pages/main-page";
-import Header from "./components/sections/header/header";
-import Footer from "./components/sections/footer/footer";
-import AuthModal from "./components/modals/auth-modal/auth-modal";
+import {allLinks} from "./routes";
+import {MainPage} from "./pages";
+import Footer from './components/sections/footer/footer';
+import Header from './components/sections/header/header';
+import AuthModal from './components/modals/auth-modal/auth-modal';
 
 const router = createBrowserRouter([
     {

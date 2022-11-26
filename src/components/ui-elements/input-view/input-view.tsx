@@ -1,8 +1,8 @@
 import React, {memo, useEffect, useRef, useState} from 'react';
-import {InputTypesEnum, InputViewProps} from "../../../core/containers/input-view.container";
 import styles from './input-view.module.scss';
-import {cn} from "../../../core/helpers/class-names";
 import SvgIcon from "../svg/svg-icon";
+import {InputTypesEnum, InputViewProps} from "../../../core/containers";
+import {cn} from "../../../core/helpers";
 
 const InputView: React.FC<InputViewProps> = ({
      type,

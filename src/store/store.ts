@@ -1,11 +1,20 @@
-import { configureStore } from '@reduxjs/toolkit'
-import {AUTH_FEATURE_KEY, authReducer} from "../core/slices/auth-slice";
+import {createEpicMiddleware} from "redux-observable";
+import {
+    configureStore,
+} from "@reduxjs/toolkit";
+import {RootClient} from "../api";
+import {rootReducer} from "./reducers";
+import {rootEpic} from "../core/epics";
+
+const Root = new RootClient();
+
+const epicMiddleware = createEpicMiddleware({
+    dependencies: {Api: Root},
+});
 
 export const store = configureStore({
-    reducer: {
-        [AUTH_FEATURE_KEY]: authReducer,
-    },
-})
+    reducer: rootReducer,
+    middleware: [epicMiddleware],
+});
 
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch;
+epicMiddleware.run(rootEpic);

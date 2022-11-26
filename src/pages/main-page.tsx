@@ -1,25 +1,35 @@
-import React, {Dispatch, memo, SetStateAction, useEffect} from 'react';
+import React, {Dispatch, memo, SetStateAction, useEffect, useMemo} from 'react';
 import {connect, DispatchProp} from 'react-redux';
 import Image from "../components/ui-elements/images/image";
 import Button from "../components/ui-elements/button/button";
-import {selectValueNumber} from "../core/slices/auth-slice";
-import {TypeStore} from "../store/type-store";
-import {increment, incrementByAmount} from '../core/slices/auth-slice';
+import {EntityProps, fetchAuthEntity, incrementByAmount, increment, selectEntity, selectValueNumber} from "../core/slices";
+import {TypeStore} from "../store";
 
 
 export interface MainPageProps {
     value: number;
+    entity: EntityProps,
+    fetchAuthData: () => void;
     incrementByAmount: (value: number) => void;
 }
 
 const MainPage: React.FC<MainPageProps> = ({
     value,
     incrementByAmount,
+    entity,
+    fetchAuthData,
 }) => {
+
+    useEffect(()=>{
+        console.log(entity, 'entities 1');
+        fetchAuthData();
+        console.log(entity, 'entities 2');
+    }, [])
+
     return (
         <>
             <Image name="47.jpg"/>
-            {value}
+            {entity.title}
             <Button
                 text={'Hello'}
                 clickHandler={()=>incrementByAmount(5)}
@@ -30,6 +40,7 @@ const MainPage: React.FC<MainPageProps> = ({
 
 const mapStateToProps = (state: TypeStore) => ({
     value: selectValueNumber(state),
+    entity: selectEntity(state),
 });
 
 const mapDispatchToProps = (dispatch: any) => ({
@@ -38,6 +49,9 @@ const mapDispatchToProps = (dispatch: any) => ({
     },
     incrementByAmount: (value: number) => {
         dispatch(incrementByAmount(value));
+    },
+    fetchAuthData: () => {
+        dispatch(fetchAuthEntity());
     }
 });
 

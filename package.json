@@ -21,6 +21,7 @@
     "react-scripts": "5.0.1",
     "react-select": "^5.6.1",
     "redux": "^4.2.0",
+    "redux-observable": "^2.0.0",
     "redux-thunk": "^2.4.2",
     "rxjs": "^7.5.7",
     "sass": "^1.56.1",
