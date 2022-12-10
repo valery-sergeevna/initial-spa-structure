@@ -4,26 +4,11 @@ import {
     RouterProvider,
 } from "react-router-dom";
 import './assets/styles/main.scss';
-import {allLinks} from "./routes";
-import {MainPage} from "./pages";
 import Footer from './components/sections/footer/footer';
 import Header from './components/sections/header/header';
-import AuthModal from './components/modals/auth-modal/auth-modal';
+import {AuthModal} from "./components/modals";
+import {router} from "./routes/routes";
 
-const router = createBrowserRouter([
-    {
-        path: allLinks.mainPage,
-        element: <MainPage/>,
-    },
-    {
-        path: allLinks.productPage,
-        element: <div>Product</div>,
-    },
-    {
-        path: allLinks.categories,
-        element: <div>Categories</div>,
-    },
-]);
 
 const App = () => {
   return (
@@ -34,6 +19,6 @@ const App = () => {
           <AuthModal/>
       </>
   );
-}
+};
 
 export default App;

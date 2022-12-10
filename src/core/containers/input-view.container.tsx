@@ -1,7 +1,5 @@
 import {SyntheticEvent} from "react";
 
-export type InputChangeEvent = (event?: SyntheticEvent) => void;
-
 // @ts-ignore
 export type InputModifiers =
     | 'small'
@@ -38,11 +36,11 @@ export interface InputViewProps {
     error?: boolean;
     minLength?: number;
     maxLength?: number;
-    onChange?: InputChangeEvent;
-    onBlur?: InputChangeEvent;
+    onBlur?: () => void;
     validate?: ValidateOptions;
+    onChange?: (data: any) => void;
     onFocus?: () => void;
     modifiers?: InputModifiers[];
     disabled?: boolean;
-    defaultValue?: string | number | null;
+    checked?: boolean;
 }

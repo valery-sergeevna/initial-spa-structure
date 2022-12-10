@@ -1,5 +1,4 @@
 import React, {memo, useEffect, useState} from 'react';
-import {IconNames} from "../../ui-elements/svg/icons-helper";
 import {uniqId} from "../../../core/helpers/id-generator";
 import ReactDOM from 'react-dom';
 import {cn} from "../../../core/helpers/class-names";
@@ -58,7 +57,7 @@ const UiModal: React.FC<UIModalProps> = (
 
     const closeModalByButton = () => {
         showModal(false);
-    }
+    };
 
     useEffect(() => {
         setContainer(getContainer(id));

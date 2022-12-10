@@ -19,38 +19,29 @@ const InputView: React.FC<InputViewProps> = ({
      modifiers = [],
      disabled,
      name,
-     defaultValue = null,
+     checked,
 }) => {
-    const inputRef = useRef<any>(null);
-
     const [passwordType, setPasswordType] = useState<string>("password");
-
-    const [success, setValid] = useState<any>(false);
     const [inputError, setError] = useState<any>(error);
-
-    const initialState = () => {
-        inputRef.current.value = value || null;
-        setError(null);
-        setValid(null);
-    };
-
-    useEffect(() => {
-        if (defaultValue) {
-            inputRef.current.value = defaultValue;
-        }
-    }, [defaultValue]);
-
-    useEffect(() => {
-        if (!value && !error) {
-            initialState();
-        }
-    }, [value, error]);
+    const [inputData, setInputData] = useState(value || '');
 
     const togglePassword = () => {
         if(passwordType === InputTypesEnum.password) {
             return setPasswordType(InputTypesEnum.text);
         }
         setPasswordType(InputTypesEnum.password);
+    };
+
+    const onChangeFromProps = (e) => {
+        if(onChange) {
+            const { target } = e,
+                valueInput = target.value;
+
+            if(target.type === 'checkbox'){
+                return onChange(!checked);
+            }
+            return onChange(valueInput);
+        }
     };
 
     return (
@@ -60,14 +51,14 @@ const InputView: React.FC<InputViewProps> = ({
         ])}>
             <label className={styles.dFlex}>
                 <input
-                    ref={inputRef}
                     name={name}
                     autoComplete="false"
                     onBlur={onBlur}
-                    onInput={onChange}
+                    onChange={onChangeFromProps}
                     onFocus={onFocus}
                     disabled={disabled}
-                    defaultValue={defaultValue || value}
+                    value={value}
+                    checked={checked}
                     minLength={minLength || 0}
                     maxLength={maxLength || 100}
                     placeholder={placeholder || ''}

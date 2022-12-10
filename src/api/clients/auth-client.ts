@@ -3,36 +3,30 @@ import {ajax} from "rxjs/ajax";
 import {BASE_API_URL} from "../../core/constants/constants";
 
 export interface AuthDataApi {
-    getTodos(): Observable<any> | Promise<any>;
-    getAuthData(params: any): Observable<any> | Promise<any>;
-    postAuthData(params: any): Observable<any> | Promise<any>;
+    getRoles(): Observable<any> | Promise<any>;
+    registerUser(params: any): Observable<any> | Promise<any>;
 }
 
 export class AuthClient implements AuthDataApi {
     readonly apiUrlList = {
-        auth: 'api/v1/event',
-        menu: 'api/v1/menu/line/${baseLang}',
-        forgot: 'api/v1/event/forgot',
-        remember: 'api/v1/event/remember',
-        todos: 'todos'
+        roles: 'getRoles.json',
+        register: 'auth/register',
+        login: 'auth/login',
     };
 
-    getTodos(): Observable<any> | Promise<any>{
-        return ajax.getJSON(`${BASE_API_URL}/${this.apiUrlList.todos}/1`);
+    getRoles(): Observable<any> | Promise<any>{
+        return ajax.post(`${BASE_API_URL + this.apiUrlList.roles}`);
     }
 
-    getAuthData (
-        params: string,
-    ): Observable<any> | Promise<any> {
-        return ajax.getJSON(`${this.apiUrlList.auth}/${params}`);
-    }
-
-    postAuthData (
+    registerUser (
         params: any,
     ): Observable<any> | Promise<any> {
-        return ajax.post(`${this.apiUrlList.auth}`,
-            {
-                token: params.name,
-            });
+        return ajax.post(`${BASE_API_URL + this.apiUrlList.register}`, params);
+    }
+
+    loginUser (
+        params: any,
+    ): Observable<any> | Promise<any> {
+        return ajax.post(`${BASE_API_URL + this.apiUrlList.login}`, params);
     }
 }

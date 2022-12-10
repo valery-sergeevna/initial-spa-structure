@@ -3,13 +3,17 @@ import Select from "react-select";
 import styles from './dropdown.module.scss';
 
 interface DropdownProps {
-    options: [];
+    options: any;
+    selected: any;
+    setSelected: (event) => void;
 }
 
 const Dropdown: React.FC<DropdownProps> = ({
     options = [],
+    selected,
+    setSelected,
 }) => {
-    const [selected, setSelected] = useState<any>(null);
+    console.log(options, 'options')
     const onChange = (e: any) => {
         setSelected(e);
     };

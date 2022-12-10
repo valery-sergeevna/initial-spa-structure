@@ -12,6 +12,10 @@
     }
 }
 
+.auth {
+    max-width: var(--maxWidthModal);
+}
+
 .forgot {
     margin-top: 25px;
     display: flex;
